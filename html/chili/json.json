@@ -1,0 +1,16 @@
+[
+  {
+    "nome": "Vilmar",
+    "idade": 55,
+    "working": true,
+    "detalhes": {
+      "profissao": "Programador",
+      "emmpresa": "TurboNET"
+    },
+    "hobbies": [
+      "Programador",
+      "enduro",
+      "shell"
+    ]
+  }
+]

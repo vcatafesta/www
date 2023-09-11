@@ -1,0 +1,82 @@
+* {
+  font-family: 'Open Sans', sans-serif;
+  /* height: 100%; */
+}
+
+.dark-mode {
+  filter: invert(1) hue-rotate(180deg)
+}
+
+.invert,
+.dark-mode img {
+  filter: invert(1) hue-rotate(180deg)
+}
+
+body {
+  background-color: #eeee;
+  width: 960px;
+  margin: auto;
+}
+
+.hea-cabecalho,
+.nav-lateral-esquerda,
+.aside-lateral-direita,
+.sec-body,
+.foo-rodape,
+.sec-logo img {
+  background-color: #08a;
+  border-radius: 10px;
+  border: 1px solid #000;
+}
+
+.hea-cabecalho {
+  height: 100px;
+  margin: 10px 10px 10px 0x;
+}
+
+.hea-cabecalho img {
+  position: relative;
+  float: left;
+  height: 80px;
+  margin: auto;
+}
+
+.nav-lateral-esquerda {
+  height: 500px;
+  width: 150px;
+  margin: 10px 10px 10px 0x;
+  float: left;
+}
+
+.aside-lateral-direita {
+  height: 500px;
+  width: 150px;
+  margin: 10px 0x 10px 10x;
+  float: right;
+}
+
+.sec-body {
+  height: 500px;
+  width: 640px;
+  margin: 0px 10px 10px 0px;
+  float: right;
+}
+
+.foo-rodape {
+  height: 50px;
+  /* width: 960px; */
+  margin: 0px;
+}
+
+span {
+  color: black;
+}
+
+.sec-logo {
+  background-color: #eee;
+}
+
+.sec-logo img {
+  width: 100%;
+  margin: 0px;
+}

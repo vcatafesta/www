@@ -1,0 +1,146 @@
+#!/usr/bin/env bash
+
+function burbulha {
+    lista=$1
+    tam=${#lista[@]}
+
+    for i in $(seq 1 $[$tam-1]); do
+            for j in $(seq 0 $[$tam - $i - 1]); do
+                    if [[ ${lista[$j]} -gt ${lista[$j+1]} ]] ; then
+                        k=${lista[$[$j+1]]}
+                        lista[$j+1]=${lista[$j]}
+                        lista[$j]=$k
+            fi
+        done
+    done
+}
+
+function insercaodireta {
+    lista=$1
+    tam=${#lista[@]}
+
+        for i in $(seq 1 $[$tam-1]) ; do
+                 v=${lista[$i]}
+                 j=$[$i-1]
+                 while [[ $j -ge 0 && ${lista[$j]} -gt $v ]] ; do
+                          lista[$[$j+1]]=${lista[$j]}
+                          j=$[$j-1]
+                 done
+
+                 lista[$[$j+1]]=$v
+        done
+}
+
+function shell {
+    lista=$1
+    tam=${#lista[@]}
+
+       for inc in $(seq 1 $[$[inc*3]+1] $[$tam-1]) ; do
+            while [ $inc -gt 0 ] ; do
+                  for i in $(seq $inc $[$tam-1]) ; do
+                        j=$i
+                        temp=${lista[$i]}
+                        while [[ $j -ge $inc && ${lista[$[$j-$inc]]} -gt $temp ]] ; do
+                                lista[$j]=${lista[$[$j-$inc]]}
+                                j=$[$j-$inc]
+                        done
+                        lista[$j]=$temp
+                  done
+                  inc=$[$inc/2]
+            done
+        done
+}
+
+function quicksort {
+    lista=$1
+        izq=$2
+        der=$3
+ 
+        i=$izq;
+        j=$der;
+        x=${lista[$[$[$izq + $der]/2]]}
+ 
+        while [ $i -le $j ] ; do
+        while [[ ${lista[$i]} -lt $x && $j -le $der ]] ; do
+            i=$[$i+1]
+        done
+ 
+        while [[ $x -lt ${lista[$j]} && $j -gt $izq ]] ; do
+            j=$[$j-1]
+        done
+ 
+        if [ $i -le $j ] ; then
+            aus=${lista[$i]}; lista[$i]=${lista[$j]}; lista[$j]=$aus;
+            i=$[$i+1];  j=$[$j-1]
+        fi
+    done
+ 
+    if [ $izq -lt $j ] ; then
+        quicksort $lista $izq $j
+        fi
+    if [ $i -lt $der ] ; then
+        quicksort $lista $i $der
+        fi
+}
+
+function insercaobinaria {
+    lista=$1
+    tam=${#lista[@]}
+ 
+            for i in $(seq 1 $[$tam-1]) ; do
+                aus=${lista[$i]}
+                izq=0;
+                der=$[$i-1]
+ 
+                while [ $izq -le $der ] ; do
+                    m=$[$[$izq+$der]/2]
+                    if [[ $aus -lt ${lista[$m]} ]] ; then
+                        der=$[$m-1]
+                    else
+                        izq=$[$m+1]
+                    fi
+                done
+                j=$[$i-1]
+ 
+                while [ $j -ge $izq ] ; do
+                    lista[$[$j+1]]=${lista[$j]}
+                    j=$[$j-1]
+                done
+                lista[$izq]=$aus
+            done
+}
+
+function selectionsort {
+    lista=$1
+    tam=${#lista[@]}
+ 
+        for i in $(seq 0 $[$tam-2]) ; do
+              min=$i
+              for j in $(seq $[$i+1] $[$tam-1]) ; do
+                    if [ ${lista[$min]} -gt ${lista[$j]} ] ; then
+                        min=$j
+                    fi
+              done
+              aus=${lista[$min]}
+              lista[$min]=${lista[$i]}
+              lista[$i]=$aus
+        done
+}
+
+lista=(5 4 3 2 1)
+#burbulha $lista
+
+declare -A ahits=()
+ahits+=([1:1]="00" [1:2]="00 01 02 02 03 05" [1:3]="03")
+ahits+=([2:1]="15" [2:2]="06 07 08 09 10 11" [2:3]="06")
+ahits+=([3:1]="02" [3:2]="12 13 14 15 16 17" [3:3]="09")
+declare -p ahits
+
+#burbulha $ahits
+#insercaodireta $ahits
+#shell $ahits
+#quicksort $ahits 0 $[${#ahits[@]}-1]
+#insercaobinaria $ahits
+selectionsort $lista
+
+for i in ${ahits[@]};do echo $i; done

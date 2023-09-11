@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>JavaScript getElementById</title>
+</head>
+
+<body>
+   <p id="texto">JavaScript getElementById</p>
+   <input type="tel" id="cxtexto" name="phone" placeholder="123-45-678" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
+   <br>
+   <div id="caixa"></div>
+   <div id="dv">Texto da DIV</div>
+</body>
+
+<script>
+   document.getElementById('dv').innerHTML = "novo texto na div"
+   with (document.getElementById('texto')) {
+      style.color = 'red'
+      style.fontSize = "50px"
+      style.fontWeight = 'bold'
+      innerHTML = "novo texto"
+   }
+   with (document.getElementById('cxtexto')) {
+      style.backgroundColor = '#aaa'
+      style.border = '1px solid black'
+      style.width = "300px"
+      style.height = '50px'
+      style.borderRadius = '10px'
+      placeHolder = 'Entre com um valor'
+   }
+   with (document.getElementById('caixa').style) {
+      backgroundColor = '#aaa'
+      border = '1px solid black'
+      width = "300px"
+      height = '300px'
+      borderRadius = '10px'
+   }
+</script>
+
+</html>

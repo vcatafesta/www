@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+DEV_LIST+=(1,22,"05 11 13 37 43 53")
+DEV_LIST+=(3,12,"03 18 25 51 52 53")
+DEV_LIST+=(2,32,"08 15 25 32 40 52")
+
+declare -p DEV_LIST
+readarray -t a < <(sort -r < <(printf '%s\n' "${DEV_LIST[@]}"))
+declare -p a
+
+	for list in "${a[@]}"; do
+		jogos=$( cut -d, -f2 <<< "$list")
+		acertos=$( cut -d, -f1 <<< "$list")
+		dezenas=$( cut -d, -f3 <<< "$list")
+		echo $acertos $jogos $dezenas
+	done
+

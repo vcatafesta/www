@@ -1,0 +1,201 @@
+html {
+  font-family: 'Open Sans', sans-serif;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  /* display: flex; */
+  color: aquamarine;
+  margin: 0;
+}
+
+h2 {
+  margin: 0;
+  color: crimson;
+}
+
+.container {
+  max-width: 1920px;
+  width: 100%;
+}
+
+header {
+  position: relative;
+  top: 0;
+  /* height: auto; */
+  height: 150px;
+  width: 100%;
+  border: 1px solid #000;
+  border-radius: 10px;
+}
+
+#logo {
+  width: 75px;
+  height: 75px;
+  margin-top: 0px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  /*background-color: #111;*/
+  background-color: ;
+
+  background-color: crimson;
+}
+
+.active {
+  /*background-color: #04AA6D;*/
+  background-color: green;
+}
+
+/* end nav */
+
+/* dark-mode */
+* {
+  /*font-family: Arial, Helvetica, sans-serif;*/
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  background: #eceff1;
+  transition: 0.3s;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+.bi {
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: crimson;
+}
+
+.bi-sun {
+  display: none;
+  color: crimson;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #eceff1;
+  box-shadow: .5px .5px 10px .5px #000;
+  padding: 1rem 2rem;
+  position: relative;
+}
+
+main {
+  width: 100%;
+  display: flex;
+  position: relative;
+  justify-content: center;
+}
+
+.card {
+  margin-top: 0rem;
+  display: flex;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.3);
+}
+
+.card-image {
+  padding: 0.5rem;
+  width: 100%;
+  position: relative;
+  background-color: #eff7fc;
+}
+
+.card img {
+  width: 100%;
+  /*transform: rotate(-25deg);*/
+  position: relative;
+  right: 0rem;
+  left: 0rem;
+  flex-shrink: 0;
+  margin-bottom: auto;
+}
+
+.dark,
+.dark header {
+  background-color: #263238;
+  color: #fff;
+}
+
+.dark .bi-sun {
+  display: block;
+}
+
+.dark .bi-moon {
+  display: none;
+}
+
+.dark .card {
+  background-color: #37474f;
+}
+
+.dark .card-image {
+  background-color: #273035;
+}
+
+.dark .bnt {
+  background-color: #67b4f3;
+}
+
+/* end dark-mode */
+
+/* begin footer */
+.dark .rodape {
+  flex-shrink: 0;
+  background-color: black;
+  color: white;
+  padding: 16px;
+  text-align: center;
+}
+
+.rodape {
+  flex-shrink: 0;
+  background-color: #333;
+  color: crimson;
+  padding: 16px;
+  text-align: center;
+}
+
+.dark .rodape p {
+  margin: 0;
+  color: green;
+}
+
+.rodape p {
+  margin: 0;
+  color: crimson;
+}
+
+/* end footer */

@@ -1,0 +1,114 @@
+	html {
+		font-family: 'Open Sans', sans-serif;
+		height: 100%;
+		margin: 0px;
+		padding: 0px;
+		width: 100%;
+		border: 1px solid #000;
+		border-radius: 10px;
+	}
+
+	header {
+		background-color: blue;
+		border: 1px solid white;
+		border-radius: 10px;
+	}
+
+	body {
+		background-color: DodgerBlue;
+		border: 1px solid black;
+		border-radius: 10px;
+	}
+
+	table {
+		background-color: blue;
+		border: 1px solid white;
+		border-radius: 10px;
+	}
+
+	th {
+		border: 0px solid white;
+	}
+
+	td {
+		border: 0px solid white;
+	}
+
+	h1 {
+		color: yellow;
+	}
+
+	h2 {
+		color: white;
+	}
+
+	p {
+		color: blue;
+	}
+
+	.jogos1 {
+		position: relative;
+		left: 50%;
+		margin-left: -180px;
+		color: #FFF;
+		font-weight: 700;
+	}
+
+	.jogos {
+		position: relative;
+		width: 20%;
+		margin: auto;
+		color: #FFF;
+		font-weight: 700;
+	}
+
+	.resultado {
+		position: relative;
+		width: 50%;
+		margin: auto;
+		color: #FFF;
+		font-weight: 700;
+	}
+
+	.table-responsive {
+		width: 100% !important;
+	}
+
+	.table {
+		border: 1px solid red;
+		width: 50% !important;
+		/*Importante manter o !important rs */
+		margin: auto;
+	}
+
+	.table-status {
+		margin-top: 20px;
+		margin-bottom: 20px !important;
+	}
+
+	form [type="submit"] {
+		display: block;
+		margin: auto;
+	}
+
+	form [type="reset"] {
+		display: block;
+		margin: auto;
+	}
+
+	.botao {
+		color: #FFF;
+		background-color: green;
+		height: 40px;
+		line-height: 30px;
+		padding: 0 20px;
+		text-transform: capitalize;
+		font-size: 14px;
+		font-weight: bold;
+		cursor: pointer;
+		border-radius: 20px;
+	}
+
+	.botao:hover {
+		transform: scale(1.05);
+	}

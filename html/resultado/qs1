@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+
+function quicksort()
+{
+left=$1
+right=$2
+
+if [[ $1 -lt $2 ]]
+then
+
+pivot=${array[$1]}
+
+while(( $left < $right ))
+do
+while((${array[$left]} <= $pivot && $left < $2))
+do
+left=$(($left + 1))
+done
+
+while((${array[$right]} > $pivot))
+do
+right=$(($right-1))
+done
+
+if [[ $left -lt $right ]]
+then
+temp=${array[$left]}
+array[$left]=${array[$right]}
+array[$right]=$temp
+fi
+done
+
+temp=${array[$right]}
+array[$right]=${array[$1]}
+array[$1]=$temp
+temp=$right
+
+quicksort $1 $((right-1)) array
+quicksort $((temp+1)) $2 array
+fi
+}
+
+echo “Enter the number of elements “
+read limit
+echo “Enter the elements into the list”
+for((i=0;i<$limit;i++))
+do
+read array[i]
+done
+
+quicksort 0 $((limit-1)) array
+
+echo Array elements after are :
+for((i=0;i<limit;i++))
+do
+echo ${array[$i]}
+done
+
+

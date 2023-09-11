@@ -1,0 +1,87 @@
+body {
+  padding: 20px;
+}
+
+p {
+  color: green;
+}
+
+/* classes */
+.meu-paragrafo {
+  background-color: black;
+  color: red;
+}
+
+/* ids */
+#titulo-principal {
+  background-color: yellow;
+  color: black;
+  padding: 10px;
+  font-family: cursive;
+}
+
+/* todos elementos, listas */
+* {
+  font-family: Inconsolata;
+}
+
+p,
+h1 {
+  border-bottom: 1px solid red;
+}
+
+/* cores */
+
+.cor-nome {
+  color: pink;
+}
+
+.cor-hexa {
+  color: #324597;
+  background-color: #333;
+}
+
+.cor-rgb {
+  color: rgb(red, green, blue);
+}
+
+/* Fontes */
+
+.serifada {
+  font-family: 'Segoe UI';
+}
+
+.semserifa {
+  font-family: Helvetica;
+}
+
+.monoespacada {
+  font-family: 'Courier New';
+}
+
+/* Size e Weight */
+.tamanho-fonte-grande {
+  font-size: 64px;
+}
+
+.tamanho-fonte-pequena {
+  font-size: 12px;
+}
+
+.peso-font {
+  font-weight: 900;
+  font-weight: bold;
+}
+
+.italico {
+  font-style: italic;
+}
+
+/* Box model */
+.box-model {
+  width: 200px;
+  height: 100px;
+  border: 1px solid blue;
+  padding: 20px;
+  margin: 20px;
+}

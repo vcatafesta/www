@@ -1,0 +1,85 @@
+#!/usr/bin/env bash
+source /chili/core.sh
+export PS4=$'${red}${0##*/}${green}[$FUNCNAME]${pink}[$LINENO]${reset} '
+set -x
+#set -e
+
+:<<comment
+declare -a ahits=(1 "01 01 01" 1)
+ahits+=(2 "02 02 02" 2)
+printf '%s\n' "${ahits[@]}"
+echo "${ahits[@]}"
+echo "${!ahits[@]}"
+echo "${#ahits[@]}"
+
+declare -A pessoas
+
+# preenchendo o array
+pessoas=(
+		["joao"]=20
+		["maria"]=30
+		["ana"]=25
+	)
+
+# percorrendo o array
+# ${pessoas[@]} expande os valores
+# ${!pessoas[@]} expande as chaves
+for pessoa in "${!pessoas[@]}"
+do
+	echo "$pessoa tem ${pessoas[$pessoa]} anos"
+done
+
+declare -A arr
+arr[0,0]=0
+arr[0,1]=1
+arr[0,2]=2
+arr[1,0]=2
+arr[1,1]=3
+arr[1,2]=4
+echo "${arr[0,0]} ${arr[0,1]} ${arr[1,2]}" # will print 0 1
+comment
+
+function asort1()
+{
+   local new=($@)
+#  readarray -t sorted < <(sort < <(printf '%s\n' "${new[@]}"))
+	readarray -td '' sorted < <(sort -z < <(printf '%s\0' "${new[@]}"))
+	echo "${sorted[@]}"
+}
+
+function asort2()
+{
+   local new=($@)
+	IFS=$'\n' sorted=($(sort <<<"${new[*]}")); unset IFS
+	echo "${sorted[@]}"
+}
+
+array=("a c" b f "3 5")
+new=($(asort2 ${array[*]}))
+printf "[%s]\n" "${new[@]}"
+
+
+declare -A authors
+authors=( [Pushkin]=10050 [Gogol]=23 [Dostoyevsky]=9999 [Tolstoy]=23 )
+
+for k in "${!authors[@]}"
+do
+  echo $k ' - ' ${authors["$k"]}
+done | sort -rn -k3
+
+
+KEYS=$(
+for KEY in ${!ADDR[@]}; do
+  echo "${ADDR[$KEY]}:::$KEY"
+done | sort | awk -F::: '{print $2}'
+)
+
+for KEY in $KEYS; do
+  VAL=${ADDR[$KEY]}
+  echo "KEY=[$KEY] VAL=[$VAL]"
+done
+
+output:
+KEY=[192.168.1.1] VAL=[host1]
+KEY=[192.168.1.2] VAL=[host2]
+KEY=[192.168.1.3] VAL=[host3]

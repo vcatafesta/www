@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name='description' content='Conferencia de Jogos da MegaSena.'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <meta http-equiv='Content-Type' content='text/html charset=UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css'>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800 & display=swap'>
+  <script src='https://kit.fontawesome.com/d5beb840ab.js' crossorigin='anonymous'></script>
+  <link rel='stylesheet' href='style.css'>
+  <title>Loterias</title>
+</head>
+
+<body>
+  <div>
+    <header>
+      <h1><b>Mega Sena CAIXA</h1>
+      <h2>Resultado do Último Concurso</h2>
+  </div>
+
+  <br>
+  <div>
+    <table class='resultado'>
+      <tr>
+        <td align='center'>fonte:
+          <a href='https://loterias.caixa.gov.br/Paginas/default.aspx' target='_blank'>CAIXA Loterias</a>
+        </td>
+      </tr>
+      </td>
+      </tr>
+      <tr>
+        <td align='center'>
+          <b>$diasemana, $data - $hora hs.</b>
+          <p></p>
+          <p></p>
+        </td>
+      </tr>
+    </table><br>
+  </div>
+  
+  <div>
+    <table class='resultado'>
+      <tr>
+        <td align="center">
+          <ul class="resultado-loteria" ng-show="destaque.acumulado">
+            <li ng-repeat="dezena in destaque.dezenas " class="ng-binding ng-scope">05</li>
+            <li ng-repeat="dezena in destaque.dezenas " class="ng-binding ng-scope">15</li>
+            <li ng-repeat="dezena in destaque.dezenas " class="ng-binding ng-scope">24</li>
+            <li ng-repeat="dezena in destaque.dezenas " class="ng-binding ng-scope">34</li>
+            <li ng-repeat="dezena in destaque.dezenas " class="ng-binding ng-scope">45</li>
+            <li ng-repeat="dezena in destaque.dezenas " class="ng-binding ng-scope">52</li>
+          </ul>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <br>
+  
+  <div>
+    <table class="resultado">
+      <tr>
+        <td>
+          <li>Nº concurso:</li>
+        </td>
+        <td class="td-yellow">
+          <b>$numconcurso</b>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <li>Data sorteio:</li>
+        </td>
+        <td class='td-yellow'><b>$dataApuracao</b></td>
+        <td class="td-yellow">(<b>$diasemanasorteio</b>)</td>
+      </tr>
+      <tr>
+        <td>
+          <li>Dezenas sorteadas:</li>
+        </td>
+        <td class="td-yellow">
+          <b>$resultformat</b>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <li>Prêmio sena:</li>
+        </td>
+        <td class="td-yellow">
+          <b>R$ $valorPremioSena</b>
+        </td>
+        <td class="td-yellow">(<b>$numGanhadoresSena</b> ganhador[es])</td>
+      </tr>
+      <tr>
+        <td>
+          <li>Prêmio quina:</li>
+        </td>
+        <td class="td-yellow">
+          <b>R$ $valorPremioQuina</b>
+        </td>
+        <td class=" td-yellow">(<b>$numGanhadoresQuina</b> ganhador[es])</td>
+      </tr>
+      <tr>
+        <td>
+          <li>Prêmio quadra:</li>
+        </td>
+        <td class="td-yellow">
+          <b>R$ $valorPremioQuadra</b>
+        </td>
+        <td class="td-yellow">(<b>$numGanhadoresQuadra</b> ganhador[es])</td>
+      </tr>
+      <tr>
+        <td>
+          <li>Data próximo sorteio:</li>
+        </td>
+        <td class="td-yellow">
+          <b>$dataProximoConcurso</b>
+        </td>
+        <td class="td-yellow">(<b>$diasemanaproxsorteio</b>)</td>
+      </tr>
+      <tr>
+        <td>
+          <li>Previsão prêmio próximo concurso:</li>
+        </td>
+        <td class="td-yellow">
+          <b>R$ $valorEstimadoProximoConcurso</b>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <br>
+  <div>
+    <table class="resultado">
+      <tr>
+        <td align='center'>Conferindo <b>
+            <rc>($qtdemeusjogos)
+          </b> jogos</td>
+      </tr>
+      <tr>
+        <td align='center'>Dezenas acertadas em <rc>vermelho
+            </b></td>
+      </tr>
+    </table>
+  </div>
+
+  <br>
+
+  <div>
+    <table class='resultado'>
+      <tr>
+        <td align='center'><b>JOGO</td>
+        <td align='center'><b>DEZENAS</td>
+        <td align='center'><b>ACERTOS</td>
+      </tr>
+    </table>
+</body>
+<div>
+  <br>
+  <footer>
+    <h1><b>Mega Sena CAIXA</h1>
+</div>
+</footer>
+
+</html>
