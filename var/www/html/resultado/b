@@ -8,10 +8,9 @@ declare -p DEV_LIST
 readarray -t a < <(sort -r < <(printf '%s\n' "${DEV_LIST[@]}"))
 declare -p a
 
-	for list in "${a[@]}"; do
-		jogos=$( cut -d, -f2 <<< "$list")
-		acertos=$( cut -d, -f1 <<< "$list")
-		dezenas=$( cut -d, -f3 <<< "$list")
-		echo $acertos $jogos $dezenas
-	done
-
+for list in "${a[@]}"; do
+	jogos=$(cut -d, -f2 <<<"$list")
+	acertos=$(cut -d, -f1 <<<"$list")
+	dezenas=$(cut -d, -f3 <<<"$list")
+	echo $acertos $jogos $dezenas
+done

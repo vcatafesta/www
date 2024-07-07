@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-:<<comment
+: <<comment
 	declare -A authors
 	authors=( [Pushkin]=10050 [Gogol]=23 [Dostoyevsky]=9999 [Tolstoy]=23 )
 
@@ -30,38 +30,38 @@ for i in "${!ahits[@]}"; do echo $i ${ahits[$i]}; done | sort -z -k2
 comment
 
 declare -A ahits=()
-ahits+=([1,1]="12" [1,2]="00 00 00 00 00 00" [1,3]="1")
-ahits+=([2,1]="22" [2,2]="15 15 15 15 15 15" [2,3]="3")
-ahits+=([3,1]="32" [3,2]="02 02 02 02 02 02" [3,3]="2")
-ahits+=([4,1]="58" [4,2]="10 10 10 10 10 10" [4,3]="4")
+ahits+=([1, 1]="12" [1, 2]="00 00 00 00 00 00" [1, 3]="1")
+ahits+=([2, 1]="22" [2, 2]="15 15 15 15 15 15" [2, 3]="3")
+ahits+=([3, 1]="32" [3, 2]="02 02 02 02 02 02" [3, 3]="2")
+ahits+=([4, 1]="58" [4, 2]="10 10 10 10 10 10" [4, 3]="4")
 declare -p ahits
 
 FullIndiceMajor() {
-	xargs -n 1 <<< ${!ahits[@]} | sort -nr | head -1
+	xargs -n 1 <<<${!ahits[@]} | sort -nr | head -1
 }
 
-FullIndiceMinor(){
-	xargs -n 1 <<< ${!ahits[@]} | sort -n | head -1
+FullIndiceMinor() {
+	xargs -n 1 <<<${!ahits[@]} | sort -n | head -1
 }
 
-IndiceDimMajor(){
-	xargs -n 1 <<< ${!ahits[@]} | sort -nr | head -1 | cut -d',' -f1
+IndiceDimMajor() {
+	xargs -n 1 <<<${!ahits[@]} | sort -nr | head -1 | cut -d',' -f1
 }
 
-IndiceDimMinor(){
-	xargs -n 1 <<< ${!ahits[@]} | sort -nr | head -1 | cut -d',' -f2
+IndiceDimMinor() {
+	xargs -n 1 <<<${!ahits[@]} | sort -nr | head -1 | cut -d',' -f2
 }
 
 indice=3
 KEYS=$(
-for KEY in ${!ahits[@]}; do
-  echo "${ahits[$KEY]}:$KEY" | grep ",$indice"
-done | sort -rn | awk -F: '{print $2}'
+	for KEY in ${!ahits[@]}; do
+		echo "${ahits[$KEY]}:$KEY" | grep ",$indice"
+	done | sort -rn | awk -F: '{print $2}'
 )
 
 for KEY in ${!ahits[@]}; do
-  echo "${ahits[$KEY]}:$KEY" | grep ",$indice"
-done | sort -rn| awk -F: '{print $2}'
+	echo "${ahits[$KEY]}:$KEY" | grep ",$indice"
+done | sort -rn | awk -F: '{print $2}'
 echo
 
 dimensao=3
@@ -70,25 +70,31 @@ n=1
 
 for KEY in $KEYS; do
 	echo $n - $tam
-	if ((n < tam )); then
-		key=${KEY//,*}
-		oldkey="$key,$indice" ;	oldvalue=${ahits[$oldkey]}
-		newkey="$n,$indice"	 ;	newvalue=${ahits[$newkey]}
+	if ((n < tam)); then
+		key=${KEY//,*/}
+		oldkey="$key,$indice"
+		oldvalue=${ahits[$oldkey]}
+		newkey="$n,$indice"
+		newvalue=${ahits[$newkey]}
 		echo oldkey: $oldkey $oldvalue
 		echo newkey: $newkey $newvalue
 		if [[ $oldkey != $newkey ]]; then
-			for (( i=1; i <= dimensao; i++)); do
-				oldkey="$key,$i" ;	oldvalue=${ahits[$oldkey]}
-				newkey="$n,$i"	  ;	newvalue=${ahits[$newkey]}
+			for ((i = 1; i <= dimensao; i++)); do
+				oldkey="$key,$i"
+				oldvalue=${ahits[$oldkey]}
+				newkey="$n,$i"
+				newvalue=${ahits[$newkey]}
 				ahits[$newkey]=$oldvalue
 				ahits[$oldkey]=$newvalue
 			done
 		fi
 		((++n))
 	fi
-	VAL=${ahits[$oldkey]}; echo "KEY=[$oldkey] VAL=[$VAL]"
-	VAL=${ahits[$newkey]}; echo "KEY=[$newkey] VAL=[$VAL]"
-		echo
+	VAL=${ahits[$oldkey]}
+	echo "KEY=[$oldkey] VAL=[$VAL]"
+	VAL=${ahits[$newkey]}
+	echo "KEY=[$newkey] VAL=[$VAL]"
+	echo
 done
 echo
 for i in "${!ahits[@]}"; do echo $i ${ahits[$i]}; done | cut -d' ' -f1- | sort

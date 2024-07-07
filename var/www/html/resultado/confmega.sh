@@ -18,12 +18,12 @@ function DiaExtenso() {
   esac
 }
 
-sh_linecount(){
-	awk 'END {print NR}' "$1"
+sh_linecount() {
+  awk 'END {print NR}' "$1"
 }
 
-sh_table(){
-	echo "<div>
+sh_table() {
+  echo "<div>
 		   <table class='resultado'>
 			<caption>"$2"</caption>
 	  	   <tr>
@@ -35,14 +35,14 @@ sh_table(){
 	"
 }
 
-sh_td_acerto(){
-	echo "<td align='center'>$contador</td><td align='center'>$line</td><td align='center'><b>$hits</b></td>"
-	echo "<tr>"
+sh_td_acerto() {
+  echo "<td align='center'>$contador</td><td align='center'>$line</td><td align='center'><b>$hits</b></td>"
+  echo "<tr>"
 }
 
-sh_td_erro(){
-	echo "<td align='center'>$contador</td><td align='center'><del>$line</del></td><td align='center'> 0</td>"
-	echo "<tr>"
+sh_td_erro() {
+  echo "<td align='center'>$contador</td><td align='center'><del>$line</del></td><td align='center'> 0</td>"
+  echo "<tr>"
 }
 
 curl --compressed --insecure -s --url "$SITE" --output "$arquivoresult"
@@ -215,9 +215,9 @@ while read -r line; do
       ((++hits))
       line=$(sed "s/$i/\<b\>\<font color=red\>$i\<\/font\>\<\/b\>/g" <<<"$line")
     fi
-   done
-	aHits+=($hits,$contador,"$line")
-	((++contador))
+  done
+  aHits+=($hits,$contador,"$line")
+  ((++contador))
 done <"$file"
 
 readarray -t Sorted < <(sort -r < <(printf '%s\n' "${aHits[@]}"))
@@ -228,18 +228,33 @@ declare -i acerto=0
 declare -i zero=0
 
 for list in "${Sorted[@]}"; do
-	hits=$( cut -d, -f1 <<< "$list")
-	contador=$( cut -d, -f2 <<< "$list")
-	line=$( cut -d, -f3 <<< "$list")
+  hits=$(cut -d, -f1 <<<"$list")
+  contador=$(cut -d, -f2 <<<"$list")
+  line=$(cut -d, -f3 <<<"$list")
 
-	case $hits in
-		6)			! (( sena   )) && { sh_table "red" "VOCÊ ACERTOU NA SENA!"; sena=1; };;
-		5)			! (( quina  )) && { sh_table "blue" "VOCÊ ACERTOU NA QUINA!"; quina=1; };;
-		4)			! (( quadra )) && { sh_table "green" "VOCÊ ACERTOU NA QUADRA!"; quadra=1; };;
-		3|2|1)	! (( acerto )) && { sh_table "orange" ""; acerto=1; };;
-		0)			! (( zero   )) && { sh_table "black"   ""; zero=1; };;
-	esac
-	(( hits == 0 )) && sh_td_erro || sh_td_acerto
+  case $hits in
+  6) ! ((sena)) && {
+    sh_table "red" "VOCÊ ACERTOU NA SENA!"
+    sena=1
+  } ;;
+  5) ! ((quina)) && {
+    sh_table "blue" "VOCÊ ACERTOU NA QUINA!"
+    quina=1
+  } ;;
+  4) ! ((quadra)) && {
+    sh_table "green" "VOCÊ ACERTOU NA QUADRA!"
+    quadra=1
+  } ;;
+  3 | 2 | 1) ! ((acerto)) && {
+    sh_table "orange" ""
+    acerto=1
+  } ;;
+  0) ! ((zero)) && {
+    sh_table "black" ""
+    zero=1
+  } ;;
+  esac
+  ((hits == 0)) && sh_td_erro || sh_td_acerto
 done
 echo "</table>
       </div>
