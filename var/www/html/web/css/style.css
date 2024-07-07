@@ -1,0 +1,65 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Ubuntu Condensed', 'Open Sans', sans-serif;
+}
+
+body {
+    margin: 0;
+}
+
+.topo {
+    background-color: gray;
+    border: 1px solid blue;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.rodape {
+    background-color: blue;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.menu {
+    background-color: #333;
+    overflow: hidden;
+}
+
+.menu a {
+    color: white;
+    padding: 14px 16px;
+    float: left;
+    display: block;
+    text-decoration: none;
+    border: 1px solid crimson;
+    border-radius: 10px;
+}
+
+.colunaA {
+    float: left;
+    width: 50%;
+    padding: 15px;
+    border: 1px solid rgb(220, 167, 20);
+    border-radius: 10px;
+}
+
+.colunaB {
+    float: left;
+    width: 50%;
+    padding: 15px;
+    border: 1px solid rgb(220, 167, 20);
+    border-radius: 10px;
+}
+
+.rodape {
+    float: left;
+    width: 100%;
+    padding: 15px;
+    border: 1px solid crimson;
+    border-radius: 10px;
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --text-color: #ffffff;
+            /* Cor do texto */
+            --dropdown-bg: #333333;
+            /* Cor de fundo do dropdown */
+            --dropdown-hover: #444444;
+            /* Cor de fundo do dropdown ao passar o mouse */
+            --border-box: #cccccc;
+            /* Cor da borda do dropdown */
+            --theme-color: #ffffff;
+            /* Cor do texto do dropdown */
+        }
+
+        .menuNative {
+            position: relative;
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .menuNative .menu {
+            fill: var(--text-color);
+            width: 15px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .dropdownNative {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .dropdownNative ul {
+            position: absolute;
+            background: var(--dropdown-bg);
+            width: 230px;
+            max-height: 150px;
+            overflow-y: auto;
+            pointer-events: none;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.2s ease;
+            border-radius: 14px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            padding: 10px 0;
+            border: 1px solid var(--border-box);
+            left: -195px;
+        }
+
+        .dropdownNative ul li {
+            line-height: 30px;
+            padding: 0 15px;
+            list-style: none;
+        }
+
+        .dropdownNative ul li a {
+            text-decoration: none;
+            color: var(--theme-color);
+            font-size: 15px;
+        }
+
+        .dropdownNative:focus-within ul {
+            opacity: 1;
+            pointer-events: all;
+            transform: translateY(0);
+        }
+
+        .dropdownNative:focus-within ul li:hover {
+            background-color: var(--dropdown-hover);
+        }
+
+        @media screen and (max-width: 415px) {
+            .menuNative {
+                display: none;
+            }
+        }
+    </style>
+    <title>Menu Dropdown Personalizado</title>
+</head>
+
+<body>
+
+    <div class="menuNative">
+        <svg class="menu" viewBox="0 0 448 512">
+            <path
+                d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
+        </svg>
+    </div>
+
+    <div class="dropdownNative" tabindex="0">
+        <span class="menu">☰</span>
+        <ul>
+            <li><a href="#">Item 1</a></li>
+            <li><a href="#">Item 2</a></li>
+            <li><a href="#">Item 3</a></li>
+            <li><a href="#">Item 4</a></li>
+            <li><a href="#">Item 5</a></li>
+        </ul>
+    </div>
+
+</body>
+
+</html>

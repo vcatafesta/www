@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download</title>
+    <style>
+        * {
+            font-family: 'Ubuntu Condensed', Lato;
+            background-color: crimson;
+        }
+
+        .main {
+            padding: 10px;
+            border: 2px solid;
+            border-radius: 20px;
+        }
+
+        form * {
+            background-color: white;
+            color: blue;
+            margin: 10px;
+            display: block;
+            padding: 5px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h1>Download de Arquivos</h1>
+        <form onsubmit="download(this['arquivo'].value, this['nome'].value, this['email'].value)">
+            <input type="text" id="arquivo" value="teste.txt">
+            <input type="text" id="nome" name="Nome">
+            <input type="text" id="email" name="E-Mail">
+            <input type="submit" value="Download">
+        </form>
+    </div>
+</body>
+
+<script>
+    function download(filename, nome, email) {
+        var element = document.createElement('a')
+        element['href'] = 'data:text/plain;charset=utf-8,' + encodeURIComponent(nome + '\n' + email)
+        element['download'] = filename
+        element['style']['display'] = 'none'
+        document['body']['appendChild'](element)
+        element['click']()
+        document['body']['removeChild'](element)
+    }
+</script>
+
+</html>

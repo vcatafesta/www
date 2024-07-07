@@ -1,0 +1,44 @@
+<!-- Seu arquivo HTML com jQuery incluído -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo com jQuery</title>
+    <!-- Inclua o jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Função para abrir e editar
+        function editOpen(filedesk) {
+            console.log("Edit: " + filedesk);
+            $.ajax({
+                url: `/execute?filedesk=${filedesk}`,
+                type: 'GET',
+                success: function (data) {
+                    $("#formEdit").html(data);
+                    $("#editModal").addClass("visible");
+                },
+                error: function (xhr, status, error) {
+                    console.error('Erro ao buscar dados:', error);
+                }
+            });
+        }
+    </script>
+</head>
+
+<body>
+
+    <!-- Seu modal e formulário -->
+    <div id="editModal" class="modal">
+        <div id="formEdit" class="modal-content">
+            <!-- Aqui será inserido o conteúdo do script Bash -->
+        </div>
+    </div>
+
+    <!-- Exemplo de chamada da função editOpen -->
+    <button onclick="editOpen('examplefile')">Abrir Modal</button>
+
+</body>
+
+</html>
